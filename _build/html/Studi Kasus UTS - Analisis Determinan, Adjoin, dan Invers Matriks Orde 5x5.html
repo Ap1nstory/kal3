@@ -1,0 +1,702 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Studi Kasus UTS - Analisis Determinan, Adjoin, dan Invers Matriks Orde 5x5 &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Studi Kasus UTS - Analisis Determinan, Adjoin, dan Invers Matriks Orde 5x5';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="tugas transformasi matrik" href="Tugas%20Transformasi%20Matrik.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="My sample book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    my profile
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Determinan.html">determinan</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Eliminasi%20Gaussian.html">elemminasi gauss</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Evaluasi%20Determinan.html">evaluasi determinan</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Mencari%20Eigen.html">mencari eigen</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Pertemuan%20Pertama.html">pertemuan pertama</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Pertemuan%20Kedua.html">pertemuan ke 2</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Simulasi%20Transformasi%20Geometri%20Komposit%20Komputasi%20%28Translasi%20dan%20Refleksi%20Sumbu%20Y%29.html">Simulasi Transformasi Geometri Komposit Komputasi (Translasi dan Refleksi Sumbu Y)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Sistem%20Persamaan%20Linear.html">D. Teori Fundamental dan Fondasi Sistem Persamaan Linear</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Soal%20Evaluasi%20Mandiri%20-%20Variasi%20Determinan%20Kofaktor%20dan%20Analisis%20Eksistensi%20Invers%20Matriks.html">Soal Evaluasi Mandiri - Variasi Determinan Kofaktor dan Analisis Eksistensi Invers Matriks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Transformasi.html">transformasi</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Tugas%20Kuliah.html">Tugas Kuliah: Perhitungan Determinan Ekspansi Baris dan Invers Matriks Adjoin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TUGAS%20Pengenalan%20Wajah%20Menggunakan%20SVD.html">tugas transformasi matrik</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Tugas%20SVD.html">PROJECT TUGAS: Pengenalan Wajah (Eigenface) Menggunakan SVD dengan Folder ‘faces’</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas%20Transformasi%20Matrik.html">tugas transformasi matrik</a></li>
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Studi Kasus UTS - Analisis Determinan, Adjoin, dan Invers Matriks Orde 5x5</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FStudi Kasus UTS - Analisis Determinan, Adjoin, dan Invers Matriks Orde 5x5.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Studi Kasus UTS - Analisis Determinan, Adjoin, dan Invers Matriks Orde 5x5.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Studi Kasus UTS - Analisis Determinan, Adjoin, dan Invers Matriks Orde 5x5</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fondasi-teoretis-matriks-orde-5x5">1. Fondasi Teoretis Matriks Orde 5x5</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-representasi-matriks-simbolik">A. Representasi Matriks Simbolik</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-rumus-determinan-ekspansi-kofaktor">B. Rumus Determinan Ekspansi Kofaktor</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-matriks-adjoin-text-adj-a">C. Matriks Adjoin (<span class="math notranslate nohighlight">\(\text{adj}(A)\)</span>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-formulasi-invers-matriks-syarat-eksistensi">D. Formulasi Invers Matriks &amp; Syarat Eksistensi</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#studi-kasus-numerik-matriks-segitiga-bawah">2. Studi Kasus Numerik Matriks Segitiga Bawah</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-perhitungan-nilai-determinan-eksplisit">A. Perhitungan Nilai Determinan Eksplisit</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-invers-menggunakan-eliminasi-gauss-jordan">3. Ekstraksi Invers Menggunakan Eliminasi Gauss-Jordan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-reduksi-elemen-di-bawah-pivot-kolom-1">Langkah 1: Reduksi Elemen di Bawah Pivot Kolom 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-reduksi-elemen-di-bawah-pivot-kolom-2">Langkah 2: Reduksi Elemen di Bawah Pivot Kolom 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-reduksi-elemen-di-bawah-pivot-kolom-3">Langkah 3: Reduksi Elemen di Bawah Pivot Kolom 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-4-reduksi-elemen-di-bawah-pivot-kolom-4">Langkah 4: Reduksi Elemen di Bawah Pivot Kolom 4</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan-hasil-akhir-perhitungan">4. Kesimpulan Hasil Akhir Perhitungan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-matriks-invers-a-1">A. Matriks Invers (<span class="math notranslate nohighlight">\(A^{-1}\)</span>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-matriks-adjoin-text-adj-a">B. Matriks Adjoin (<span class="math notranslate nohighlight">\(\text{adj}(A)\)</span>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kode-program-python-verifikasi-komputasi">5. Kode Program Python (Verifikasi Komputasi)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="studi-kasus-uts-analisis-determinan-adjoin-dan-invers-matriks-orde-5x5">
+<h1>Studi Kasus UTS - Analisis Determinan, Adjoin, dan Invers Matriks Orde 5x5<a class="headerlink" href="#studi-kasus-uts-analisis-determinan-adjoin-dan-invers-matriks-orde-5x5" title="Link to this heading">#</a></h1>
+<p>Pada bab ini, kita akan membahas secara komprehensif penyelesaian matematis dan implementasi komputasi untuk mencari nilai determinan, matriks adjoin, serta invers dari matriks berorde <span class="math notranslate nohighlight">\(5 \times 5\)</span>. Studi kasus ini memadukan dua pendekatan utama: metode analitis kofaktor untuk matriks simbolik dan metode numerik Eliminasi Gauss-Jordan untuk matriks terstruktur.</p>
+<hr class="docutils" />
+<section id="fondasi-teoretis-matriks-orde-5x5">
+<h2>1. Fondasi Teoretis Matriks Orde 5x5<a class="headerlink" href="#fondasi-teoretis-matriks-orde-5x5" title="Link to this heading">#</a></h2>
+<section id="a-representasi-matriks-simbolik">
+<h3>A. Representasi Matriks Simbolik<a class="headerlink" href="#a-representasi-matriks-simbolik" title="Link to this heading">#</a></h3>
+<p>Misalkan kita memiliki sebuah matriks persegi <span class="math notranslate nohighlight">\(A\)</span> berdimensi <span class="math notranslate nohighlight">\(5 \times 5\)</span> dengan elemen-elemen variabel sebagai berikut:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \begin{bmatrix} a &amp; b &amp; c &amp; d &amp; e \\ f &amp; g &amp; h &amp; i &amp; j \\ k &amp; l &amp; m &amp; n &amp; o \\ p &amp; q &amp; r &amp; s &amp; t \\ u &amp; v &amp; w &amp; x &amp; y \end{bmatrix}\end{split}\]</div>
+</section>
+<section id="b-rumus-determinan-ekspansi-kofaktor">
+<h3>B. Rumus Determinan Ekspansi Kofaktor<a class="headerlink" href="#b-rumus-determinan-ekspansi-kofaktor" title="Link to this heading">#</a></h3>
+<p>Untuk menghitung determinan matriks di atas secara analitis, kita dapat menerapkan metode <strong>Ekspansi Kofaktor</strong> sepanjang baris pertama:</p>
+<div class="math notranslate nohighlight">
+\[\det(A) = aC_{11} - bC_{12} + cC_{13} - dC_{14} + eC_{15}\]</div>
+<p>Di mana nilai kofaktor <span class="math notranslate nohighlight">\(C_{ij}\)</span> didefinisikan berdasarkan tanda minornya:
+$<span class="math notranslate nohighlight">\(C_{ij} = (-1)^{i+j} \cdot M_{ij}\)</span>$</p>
+<p>_Catatan: <span class="math notranslate nohighlight">\(M_{ij}\)</span> merupakan determinan sub-matriks berukuran <span class="math notranslate nohighlight">\(4 \times 4\)</span> yang diperoleh dengan cara menghapus baris ke-<span class="math notranslate nohighlight">\(i\)</span> dan kolom ke-<span class="math notranslate nohighlight">\(j\)</span> pada matriks utama._</p>
+</section>
+<section id="c-matriks-adjoin-text-adj-a">
+<h3>C. Matriks Adjoin (<span class="math notranslate nohighlight">\(\text{adj}(A)\)</span>)<a class="headerlink" href="#c-matriks-adjoin-text-adj-a" title="Link to this heading">#</a></h3>
+<p>Matriks adjoin diperoleh dengan melakukan operasi transpos (<em>transpose</em>) terhadap matriks kofaktor yang dihasilkan dari seluruh elemen matriks <span class="math notranslate nohighlight">\(A\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{adj}(A) = \begin{bmatrix} C_{11} &amp; C_{21} &amp; C_{31} &amp; C_{41} &amp; C_{51} \\ C_{12} &amp; C_{22} &amp; C_{32} &amp; C_{42} &amp; C_{52} \\ C_{13} &amp; C_{23} &amp; C_{33} &amp; C_{43} &amp; C_{53} \\ C_{14} &amp; C_{24} &amp; C_{34} &amp; C_{44} &amp; C_{54} \\ C_{15} &amp; C_{25} &amp; C_{35} &amp; C_{45} &amp; C_{55} \end{bmatrix}\end{split}\]</div>
+</section>
+<section id="d-formulasi-invers-matriks-syarat-eksistensi">
+<h3>D. Formulasi Invers Matriks &amp; Syarat Eksistensi<a class="headerlink" href="#d-formulasi-invers-matriks-syarat-eksistensi" title="Link to this heading">#</a></h3>
+<p>Hubungan antara nilai determinan, matriks adjoin, dan invers matriks dirumuskan melalui persamaan:</p>
+<div class="math notranslate nohighlight">
+\[A^{-1} = \frac{1}{\det(A)} \cdot \text{adj}(A)\]</div>
+<p><strong>Syarat Mutlak Eksistensi Invers:</strong></p>
+<ul class="simple">
+<li><p>Jika <span class="math notranslate nohighlight">\(\det(A) \neq 0\)</span>, maka matriks <span class="math notranslate nohighlight">\(A\)</span> disebut sebagai <strong>Matriks Non-Singular</strong> dan dipastikan memiliki invers.</p></li>
+<li><p>Jika <span class="math notranslate nohighlight">\(\det(A) = 0\)</span>, maka matriks <span class="math notranslate nohighlight">\(A\)</span> disebut sebagai <strong>Matriks Singular</strong> dan tidak memiliki invers karena pembagian dengan angka nol tidak terdefinisi.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="studi-kasus-numerik-matriks-segitiga-bawah">
+<h2>2. Studi Kasus Numerik Matriks Segitiga Bawah<a class="headerlink" href="#studi-kasus-numerik-matriks-segitiga-bawah" title="Link to this heading">#</a></h2>
+<p>Mari kita uji teori di atas menggunakan sebuah contoh kasus matriks segitiga bawah (<em>lower triangular matrix</em>) terstruktur berikut:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 2 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 3 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 4 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 5 &amp; 1 \end{bmatrix}\end{split}\]</div>
+<section id="a-perhitungan-nilai-determinan-eksplisit">
+<h3>A. Perhitungan Nilai Determinan Eksplisit<a class="headerlink" href="#a-perhitungan-nilai-determinan-eksplisit" title="Link to this heading">#</a></h3>
+<p>Berdasarkan teorema aljabar linear, nilai determinan dari sebuah matriks yang berbentuk segitiga bawah (atau segitiga atas) cukup dihitung dengan melakukan <strong>operasi perkalian seluruh elemen pada diagonal utamanya</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\det(A) = a_{11} \cdot a_{22} \cdot a_{33} \cdot a_{44} \cdot a_{55}\]</div>
+<div class="math notranslate nohighlight">
+\[\det(A) = 1 \cdot 1 \cdot 1 \cdot 1 \cdot 1 = 1\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="ekstraksi-invers-menggunakan-eliminasi-gauss-jordan">
+<h2>3. Ekstraksi Invers Menggunakan Eliminasi Gauss-Jordan<a class="headerlink" href="#ekstraksi-invers-menggunakan-eliminasi-gauss-jordan" title="Link to this heading">#</a></h2>
+<p>Untuk mencari matriks invers secara numerik, kita menggabungkan matriks <span class="math notranslate nohighlight">\(A\)</span> dengan matriks identitas <span class="math notranslate nohighlight">\(I\)</span> berorde <span class="math notranslate nohighlight">\(5 \times 5\)</span> ke dalam struktur matriks augmentasi <span class="math notranslate nohighlight">\([A \mid I]\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left[ \begin{array}{ccccc|ccccc} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 2 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 3 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 4 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 5 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \end{array} \right]\end{split}\]</div>
+<p>Berikut adalah visualisasi langkah demi langkah Operasi Baris Elementer (OBE) untuk mengubah sisi kiri menjadi matriks identitas:</p>
+<section id="langkah-1-reduksi-elemen-di-bawah-pivot-kolom-1">
+<h3>Langkah 1: Reduksi Elemen di Bawah Pivot Kolom 1<a class="headerlink" href="#langkah-1-reduksi-elemen-di-bawah-pivot-kolom-1" title="Link to this heading">#</a></h3>
+<p>Gunakan operasi baris <span class="math notranslate nohighlight">\(R_2 \leftarrow R_2 - 2R_1\)</span>:
+$<span class="math notranslate nohighlight">\(\left[ \begin{array}{ccccc|ccccc} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; -2 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 3 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 4 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 5 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \end{array} \right]\)</span>$</p>
+</section>
+<section id="langkah-2-reduksi-elemen-di-bawah-pivot-kolom-2">
+<h3>Langkah 2: Reduksi Elemen di Bawah Pivot Kolom 2<a class="headerlink" href="#langkah-2-reduksi-elemen-di-bawah-pivot-kolom-2" title="Link to this heading">#</a></h3>
+<p>Gunakan operasi baris <span class="math notranslate nohighlight">\(R_3 \leftarrow R_3 - 3R_2\)</span>:
+$<span class="math notranslate nohighlight">\(\left[ \begin{array}{ccccc|ccccc} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; -2 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 6 &amp; -3 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 4 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 5 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \end{array} \right]\)</span>$</p>
+</section>
+<section id="langkah-3-reduksi-elemen-di-bawah-pivot-kolom-3">
+<h3>Langkah 3: Reduksi Elemen di Bawah Pivot Kolom 3<a class="headerlink" href="#langkah-3-reduksi-elemen-di-bawah-pivot-kolom-3" title="Link to this heading">#</a></h3>
+<p>Gunakan operasi baris <span class="math notranslate nohighlight">\(R_4 \leftarrow R_4 - 4R_3\)</span>:
+$<span class="math notranslate nohighlight">\(\left[ \begin{array}{ccccc|ccccc} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; -2 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 6 &amp; -3 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; -24 &amp; 12 &amp; -4 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 5 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \end{array} \right]\)</span>$</p>
+</section>
+<section id="langkah-4-reduksi-elemen-di-bawah-pivot-kolom-4">
+<h3>Langkah 4: Reduksi Elemen di Bawah Pivot Kolom 4<a class="headerlink" href="#langkah-4-reduksi-elemen-di-bawah-pivot-kolom-4" title="Link to this heading">#</a></h3>
+<p>Gunakan operasi baris <span class="math notranslate nohighlight">\(R_5 \leftarrow R_5 - 5R_4\)</span>:
+$<span class="math notranslate nohighlight">\(\left[ \begin{array}{ccccc|ccccc} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; -2 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 6 &amp; -3 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; -24 &amp; 12 &amp; -4 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 120 &amp; -60 &amp; 20 &amp; -5 &amp; 1 \end{array} \right]\)</span>$</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="kesimpulan-hasil-akhir-perhitungan">
+<h2>4. Kesimpulan Hasil Akhir Perhitungan<a class="headerlink" href="#kesimpulan-hasil-akhir-perhitungan" title="Link to this heading">#</a></h2>
+<p>Karena sisi kiri matriks augmentasi telah berhasil diubah menjadi bentuk matriks identitas sempurna (<span class="math notranslate nohighlight">\(I\)</span>), maka sisi sebelah kanan secara otomatis bertindak sebagai komponen matriks invers (<span class="math notranslate nohighlight">\(A^{-1}\)</span>):</p>
+<section id="a-matriks-invers-a-1">
+<h3>A. Matriks Invers (<span class="math notranslate nohighlight">\(A^{-1}\)</span>)<a class="headerlink" href="#a-matriks-invers-a-1" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}A^{-1} = \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ -2 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\ 6 &amp; -3 &amp; 1 &amp; 0 &amp; 0 \\ -24 &amp; 12 &amp; -4 &amp; 1 &amp; 0 \\ 120 &amp; -60 &amp; 20 &amp; -5 &amp; 1 \end{bmatrix}\end{split}\]</div>
+</section>
+<section id="b-matriks-adjoin-text-adj-a">
+<h3>B. Matriks Adjoin (<span class="math notranslate nohighlight">\(\text{adj}(A)\)</span>)<a class="headerlink" href="#b-matriks-adjoin-text-adj-a" title="Link to this heading">#</a></h3>
+<p>Memanfaatkan hubungan dasar aljabar <span class="math notranslate nohighlight">\(\text{adj}(A) = \det(A) \cdot A^{-1}\)</span>, dan berhubung nilai konstatanta <span class="math notranslate nohighlight">\(\det(A) = 1\)</span>, maka susunan matriks adjoin berharga sama persis dengan matriks inversnya:
+$<span class="math notranslate nohighlight">\(\text{adj}(A) = A^{-1} = \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ -2 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\ 6 &amp; -3 &amp; 1 &amp; 0 &amp; 0 \\ -24 &amp; 12 &amp; -4 &amp; 1 &amp; 0 \\ 120 &amp; -60 &amp; 20 &amp; -5 &amp; 1 \end{bmatrix}\)</span>$</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="kode-program-python-verifikasi-komputasi">
+<h2>5. Kode Program Python (Verifikasi Komputasi)<a class="headerlink" href="#kode-program-python-verifikasi-komputasi" title="Link to this heading">#</a></h2>
+<p>Di bawah ini adalah kode pemrograman Python menggunakan pustaka NumPy untuk membuktikan keakuratan hitungan manual di atas secara digital:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># 1. Definisi Matriks Segitiga Bawah sesuai soal UTS</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+<span class="c1"># Perhitungan nilai determinan sistem</span>
+<span class="n">det_A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># Perhitungan invers matriks</span>
+<span class="n">inv_A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># Perhitungan matriks adjoin</span>
+<span class="n">adj_A</span> <span class="o">=</span> <span class="n">det_A</span> <span class="o">*</span> <span class="n">inv_A</span>
+
+<span class="c1"># Tampilkan hasil running program</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;VERIFIKASI OUTPUT NUMERIK PROGRAM UTS:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;1. Nilai Determinan Matriks : </span><span class="si">{</span><span class="n">det_A</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2. Matriks Invers (A^-1) :</span><span class="se">\n</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">inv_A</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;3. Matriks Adjoin (adj A) :</span><span class="se">\n</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">adj_A</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Tugas%20Transformasi%20Matrik.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">tugas transformasi matrik</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fondasi-teoretis-matriks-orde-5x5">1. Fondasi Teoretis Matriks Orde 5x5</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-representasi-matriks-simbolik">A. Representasi Matriks Simbolik</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-rumus-determinan-ekspansi-kofaktor">B. Rumus Determinan Ekspansi Kofaktor</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-matriks-adjoin-text-adj-a">C. Matriks Adjoin (<span class="math notranslate nohighlight">\(\text{adj}(A)\)</span>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-formulasi-invers-matriks-syarat-eksistensi">D. Formulasi Invers Matriks &amp; Syarat Eksistensi</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#studi-kasus-numerik-matriks-segitiga-bawah">2. Studi Kasus Numerik Matriks Segitiga Bawah</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-perhitungan-nilai-determinan-eksplisit">A. Perhitungan Nilai Determinan Eksplisit</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-invers-menggunakan-eliminasi-gauss-jordan">3. Ekstraksi Invers Menggunakan Eliminasi Gauss-Jordan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-reduksi-elemen-di-bawah-pivot-kolom-1">Langkah 1: Reduksi Elemen di Bawah Pivot Kolom 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-reduksi-elemen-di-bawah-pivot-kolom-2">Langkah 2: Reduksi Elemen di Bawah Pivot Kolom 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-reduksi-elemen-di-bawah-pivot-kolom-3">Langkah 3: Reduksi Elemen di Bawah Pivot Kolom 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-4-reduksi-elemen-di-bawah-pivot-kolom-4">Langkah 4: Reduksi Elemen di Bawah Pivot Kolom 4</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan-hasil-akhir-perhitungan">4. Kesimpulan Hasil Akhir Perhitungan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-matriks-invers-a-1">A. Matriks Invers (<span class="math notranslate nohighlight">\(A^{-1}\)</span>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-matriks-adjoin-text-adj-a">B. Matriks Adjoin (<span class="math notranslate nohighlight">\(\text{adj}(A)\)</span>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kode-program-python-verifikasi-komputasi">5. Kode Program Python (Verifikasi Komputasi)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
