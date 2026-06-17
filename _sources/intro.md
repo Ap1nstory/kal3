@@ -1,11 +1,17 @@
-# Welcome to your Jupyter Book
+# my profile
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+halo teman-teman, Selamat datang di website tugas kuliah **Komputasi Aljabar Linear**. Website ini disusun untuk memenuhi tugas dan mendokumentasikan, serta mengimplementasikan konsep-konsep aljabar linear dengan bahasa pemrograman python.
+perkenalkan saya :
 
-Check out the content pages bundled with this sample book to see more.
+---
 
-```{tableofcontents}
-```
+- **Nama : Moh. Busiri**
+- **Nim : 250411100064**
+- **Program Studi : Teknik Informatika**
+- **Universitas Trunodjoyo Madura UTM**
+
+---
+
+### Daftar Materi & Tugas
+
+Di dalam website ini, terdapat beberapa materi penting yang telah dipelajari dan diimplementasikan ke dalam kode program, Silakan gunakan menu navigasi di sidebar sebelah kiri untuk menjelajahi setiap materi dan melihat kode program beserta outputnya secara detail.
