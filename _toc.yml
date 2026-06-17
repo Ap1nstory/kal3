@@ -1,0 +1,24 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+
+chapters:
+  - file: Determinan
+  - file: Eliminasi Gaussian
+  - file: Evaluasi Determinan
+  - file: Kompresi dan Rekonstruksi Citra Menggunakan Perkalian Matriks SVDDeterminan Matriks Orde 5x5
+  - file: Mencari Eigen
+  - file: Pertemuan Pertama
+  - file: Pertemuan Kedua
+  - file: Simulasi Transformasi Geometri Komposit Komputasi (Translasi dan Refleksi Sumbu Y)
+  - file: Sistem Persamaan Linear
+  - file: Soal Evaluasi Mandiri - Variasi Determinan Kofaktor dan Analisis Eksistensi Invers Matriks
+  - file: Transformasi
+  - file: Tugas Kuliah
+  - file: TUGAS Pengenalan Wajah Menggunakan SVD
+  - file: Tugas SVD
+  - file: Tugas Transformasi Matrik
+  - file: Studi Kasus UTS - Analisis Determinan, Adjoin, dan Invers Matriks Orde 5x5
+  - file: Tugas Komputasi Determinan Menggunakan Operasi Baris Elementer
