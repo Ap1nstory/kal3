@@ -44,7 +44,6 @@ $$\det(B) = -41$$
 
 **Jawaban:** Nilai determinan matriks $B$ adalah **$-41$**.
 
----
 
 ## Soal 3
 Jika
