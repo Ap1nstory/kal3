@@ -69,7 +69,6 @@ Karena nilai $\det(C) = 0$, maka matriks $C$ adalah **matriks singular** (matrik
 
 ## B. Soal Dekomposisi Matriks (LU Decomposition)
 
----
 
 ## Soal 4
 Lakukan dekomposisi LU terhadap matriks:
